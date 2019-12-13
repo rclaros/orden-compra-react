@@ -6,7 +6,7 @@ import { loadCart, removeProduct, changeProductQuantity } from '../../services/c
 import { updateCart } from '../../services/total/actions';
 import CartProduct from './CartProduct';
 import { formatPrice } from '../../services/util';
-
+import {PopupboxManager} from 'react-popupbox';
 import './style.scss';
 
 class FloatCart extends Component {
@@ -24,6 +24,53 @@ class FloatCart extends Component {
   state = {
     isOpen: false
   };
+
+
+ 
+
+  openPopupbox(monto){
+
+    const {
+      totalPrice,
+      productQuantity,
+      currencyFormat,
+      currencyId
+    } = this.props.cartTotal;
+
+   
+    const content = (
+      <div class="popupbox-wrapper">
+        <form>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+      <label for="inputState">Documento</label>
+      <select id="inputState" class="form-control">
+        <option selected>Selecciones</option>
+        <option>DNI</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Nro.Documento"/>
+    </div>
+    <div class="form-group col-md-6">
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Nombre"/>
+    </div>
+    <div class="form-group col-md-6">
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Apellido"/>
+    </div>
+    <div class="form-group col-md-6">
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Correo Electronico"/>
+    </div>
+    <div>
+      <label>Total : ${formatPrice(totalPrice,currencyId)}</label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+      </div>
+    )
+    PopupboxManager.open({ content })
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.newProduct !== this.props.newProduct) {
@@ -88,10 +135,7 @@ class FloatCart extends Component {
       alert('Add some product in the cart!');
     } else {
       alert(
-        `Checkout - Subtotal: ${currencyFormat} ${formatPrice(
-          totalPrice,
-          currencyId
-        )}`
+        `Total : ${currencyFormat} ${formatPrice(totalPrice,currencyId)}`
       );
     }
   };
@@ -106,6 +150,9 @@ class FloatCart extends Component {
     }
     updateCart(cartProducts);
   }
+
+
+  
 
   render() {
     const { cartTotal, cartProducts, removeProduct, changeProductQuantity } = this.props;
@@ -184,9 +231,15 @@ class FloatCart extends Component {
                 )}
               </small>
             </div>
-            <div onClick={() => this.proceedToCheckout()} className="buy-btn">
-              Checkout
+
+
+
+            <div onClick={() =>this.openPopupbox(this.props.cart)} className="buy-btn">
+              Registrar Pedido
             </div>
+          
+
+
           </div>
         </div>
       </div>
