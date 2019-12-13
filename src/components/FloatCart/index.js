@@ -6,7 +6,7 @@ import { loadCart, removeProduct, changeProductQuantity } from '../../services/c
 import { updateCart } from '../../services/total/actions';
 import CartProduct from './CartProduct';
 import { formatPrice } from '../../services/util';
-
+import Sort2 from '../Shelf/Sort copy';
 import './style.scss';
 
 class FloatCart extends Component {
@@ -113,6 +113,7 @@ class FloatCart extends Component {
     const products = cartProducts.map(p => {
       return (
         <CartProduct product={p} removeProduct={removeProduct} changeProductQuantity={changeProductQuantity} key={p.id} />
+        
       );
     });
 
@@ -163,6 +164,14 @@ class FloatCart extends Component {
           </div>
 
           <div className="float-cart__footer">
+          <div className="datos">DATOS PARA SU ENVIO</div>
+          <div className="form-datos">
+            
+             <label className="lname">Name:<input type="text" className="name" /></label>
+             <label className="lname">Apellidos:<input type="text" className="napellidos" /></label>
+             <label className="lname">Email:<input type="text" className="email" /></label>
+             <Sort2/>
+            </div>
             <div className="sub">SUBTOTAL</div>
             <div className="sub-price">
               <p className="sub-price__val">
@@ -185,7 +194,7 @@ class FloatCart extends Component {
               </small>
             </div>
             <div onClick={() => this.proceedToCheckout()} className="buy-btn">
-              Checkout
+              Enviar Pedido Niel
             </div>
           </div>
         </div>
