@@ -92,10 +92,10 @@ class FloatCart extends Component {
     } = this.props.cartTotal;
 
     if (!productQuantity) {
-      alert('Add some product in the cart!');
+      alert('No Agregaste Ningun Producto!');
     } else {
       alert(
-        `Checkout - Subtotal: ${currencyFormat} ${formatPrice(
+        `Tu Compra ha Sido Aceptada "Monto de Compra": ${currencyFormat} ${formatPrice(
           totalPrice,
           currencyId
         )}`
@@ -195,7 +195,7 @@ class FloatCart extends Component {
               </small>
             </div>
             <div onClick={this.togglePop} className="buy-btn">
-              Enviar Pedido Niel
+              COMPRAR PEDIDO
             </div>
             {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}
           </div>
