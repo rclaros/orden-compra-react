@@ -20,7 +20,7 @@
   .modal_content {
     background-color: white;
     position: absolute;
-    top:-90%;
+    top:-130%;
     padding: 20px;
     border-radius: 5px;
     border: 2px solid black;
@@ -272,6 +272,7 @@
     }
     .lname{
       color: rgb(0, 0, 0);
+      font-weight: bold;
       text-align: start;
       width: 10%;
     }
@@ -316,6 +317,19 @@
       }
     }
 
+    .sub-envio {
+      width: 80%;
+      text-align: right;
+      &__val,
+      &__installment {
+        margin: 0;
+      }
+      &__val {
+        color: #ff0057;
+        font-size: 22px;
+      }
+    }
+
     .buy-btn {
       color: #ececec;
       text-transform: uppercase;
@@ -341,6 +355,7 @@
     cursor: pointer;
     -webkit-transition: background-color 0.2s;
     transition: background-color 0.2s;
+    width: 100%;
     }
 
   }
