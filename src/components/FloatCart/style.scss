@@ -9,6 +9,24 @@
 
   transition: right 0.2s;
 
+  .modal {
+   
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  
+  .modal_content {
+    background-color: white;
+    position: absolute;
+    top:-90%;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid black;
+  }
+  
+
   &--open {
     right: 0;
   }
@@ -29,7 +47,19 @@
       background-color: #212027;
     }
   }
-
+.close-envio{
+  
+  width: 30px;
+  height: 30px;
+  color: #ececec;
+  background-color: #110544;
+  text-align: center;
+  line-height: 25px;
+  position: absolute;
+  top: 0;
+  left: -0px;
+  cursor: pointer;
+}
   .bag {
     width: 40px;
     height: 40px;
@@ -221,11 +251,12 @@
       color: black;
 
     outline: none;
-    border: 1px solid #ececec;
+    border: 2px solid black;
     border-radius: 2px;
-    margin-left: 10px;
-    width: auto;
+    margin: 3px 0 3px 10px;
+    width: 100%;
     height: 25px;
+    
    }
     .sub,
     .sub-price {
@@ -233,34 +264,35 @@
       vertical-align: middle;
       display: inline-block;
     }
+ 
     .datos {
-      color: #f8f8f8;
+      color: #000;
       width: 100%;
       text-align: center;
     }
     .lname{
-      color: #fff;
+      color: rgb(0, 0, 0);
       text-align: start;
       width: 10%;
     }
     .form-datos{
       padding: 15px 0;
-
+      
     }
     .napellidos{
-      width: 79%;
+      width: 100%;
       color: #000;
       outline: none;
-      border: 1px solid #ececec;
+      border: 2px solid black;
       border-radius: 2px;
       margin-left: 10px;
       height: 20px;
     }
     .name,.email{
-      width: 85%;
+      width: 100%;
       color: #000;
       outline: none;
-      border: 1px solid #ececec;
+      border: 2px solid black;
       border-radius: 2px;
       margin: 3px 0 3px 10px;
       height: 20px;
@@ -299,6 +331,18 @@
         background-color: #000;
       }
     }
+    .buy-envio{
+      color: #ececec;
+    text-transform: uppercase;
+    background-color: #110544;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    cursor: pointer;
+    -webkit-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+    }
+
   }
 }
 
