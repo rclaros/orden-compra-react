@@ -7,7 +7,7 @@ import { updateCart } from '../../services/total/actions';
 import CartProduct from './CartProduct';
 import { formatPrice } from '../../services/util';
 
-import PopUp from '../PopUp/PopUp';
+import PopUp from '../PopUp/PopUp'; 
 import './style.scss';
 
 class FloatCart extends Component {
@@ -71,6 +71,7 @@ class FloatCart extends Component {
 
     updateCart(cartProducts);
     this.openFloatCart();
+    console.log("cartProducts",cartProducts);
   };
 
   removeProduct = product => {
@@ -116,11 +117,9 @@ class FloatCart extends Component {
 
   render() {
     const { cartTotal, cartProducts, removeProduct, changeProductQuantity } = this.props;
-
     const products = cartProducts.map(p => {
       return (
         <CartProduct product={p} removeProduct={removeProduct} changeProductQuantity={changeProductQuantity} key={p.id} />
-        
       );
     });
 
@@ -129,7 +128,6 @@ class FloatCart extends Component {
     if (!!this.state.isOpen) {
       classes.push('float-cart--open');
     }
-
     return (
       <div className={classes.join(' ')}>
         {/* If cart open, show close (x) button */}
@@ -157,14 +155,14 @@ class FloatCart extends Component {
             <span className="bag">
               <span className="bag__quantity">{cartTotal.productQuantity}</span>
             </span>
-            <span className="header-title">Cart</span>
+            <span className="header-title">Carrito</span>
           </div>
 
           <div className="float-cart__shelf-container">
             {products}
             {!products.length && (
               <p className="shelf-empty">
-                Add some products in the cart <br />
+                Agregar productos en el carro<br />
                 :)
               </p>
             )}
@@ -173,7 +171,7 @@ class FloatCart extends Component {
           <div className="float-cart__footer">
           <div className="form-datos">
             </div>
-            <div className="sub">SUBTOTAL</div>
+            <div className="sub">SUB TOTAL</div>
             <div className="sub-price">
               <p className="sub-price__val">
                 {`${cartTotal.currencyFormat} ${formatPrice(
@@ -197,7 +195,7 @@ class FloatCart extends Component {
             <div onClick={this.togglePop} className="buy-btn">
               COMPRAR PEDIDO
             </div>
-            {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}
+            {this.state.seen ? <PopUp eventClose={this.togglePop} products={cartProducts} toggle={this.togglePop} /> : null}
           </div>
         </div>
       </div>

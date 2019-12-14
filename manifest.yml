@@ -1,0 +1,7 @@
+---
+applications:
+- name: dcs20193final
+  memory: 128MB
+  instances: 1
+  buildpack: staticfile_buildpack
+  stack: cflinuxfs3

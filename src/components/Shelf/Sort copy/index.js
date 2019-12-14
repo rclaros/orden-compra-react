@@ -6,16 +6,14 @@ import { updateSort } from '../../../services/sort/actions';
 import Selectbox from '../../Selectbox';
 
 const sortBy = [
-  { value: '', label: 'Select' },
-  { value: 'DNI', label: 'Dni' },
-  { value: 'RUC', label: 'Ruc' }
+  { value: 1, label: 'DNI' },
+  { value: 2, label: 'PASAPORTE' }
 ];
 
 const Sort2 = ({ updateSort, sort }) => (
   <div className="sort">
     <label className="lname">Documento:  
     <Selectbox options={sortBy} handleOnChange={value => updateSort(value)} /></label>
-  
   </div>
 );
 
